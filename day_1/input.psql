@@ -1,0 +1,1 @@
+\COPY calibration_values(value) FROM 'input.txt' WITH CSV FORCE NOT NULL value;
