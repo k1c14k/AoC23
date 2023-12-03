@@ -1,0 +1,1 @@
+select sum(id) from game where id not in (select distinct game_id from game_subset where red > 12 or green > 13 or blue > 14);
