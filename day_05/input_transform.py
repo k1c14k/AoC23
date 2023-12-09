@@ -9,9 +9,13 @@ with open(INPUT_FILE_NAME, 'r') as f_in:
     with open(INPUT_FILE_NAME.replace('txt', 'sql'), 'w') as f_out:
         f_out.write('delete from mapping;\n')
         f_out.write('delete from component;\n')
+        f_out.write('delete from component_range;\n')
         ln = f_in.readline()
-        for seed_id in re.findall(r'([0-9]+)', ln):
+        seed_ids = re.findall(r'([0-9]+)', ln)
+        for seed_id in seed_ids:
             f_out.write(f"insert into component (id, category_id) values ({seed_id}, 1);\n")
+        for pair in zip(*(iter(seed_ids),)*2):
+            f_out.write(f"insert into component_range (id, range, category_id) values ({pair[0]}, {pair[1]}, 1);\n")
         source = None
         target = None
         for ln in f_in:
