@@ -1,7 +1,7 @@
 import re
 import sys
 
-line_re = re.compile(r"([A-Z]+) = \(([A-Z]+), ([A-Z]+)\)")
+line_re = re.compile(r"([0-9A-Z]+) = \(([0-9A-Z]+), ([0-9A-Z]+)\)")
 
 INPUT_FILE_NAME = sys.argv[1]
 
